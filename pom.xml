@@ -164,19 +164,25 @@
 
             <!--  Copy the static files to the target directory -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
+                        <id>copy-frontend-build</id>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target/classes/static</outputDirectory>
+                            <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
+                            <overwrite>true</overwrite>
                             <resources>
                                 <resource>
-                                    <directory>src/main/dist</directory>
+                                    <directory>${project.basedir}/dist</directory>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
                                 </resource>
                             </resources>
                         </configuration>

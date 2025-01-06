@@ -19,7 +19,7 @@ mvn package
 ## Prod Run
 
 ```bash
-java -jar target/s5-sae-rdv-1.0-SNAPSHOT.jar
+java -jar target/sae-0.0.1-SNAPSHOT.jar
 ```
 
 ## Dev Run
