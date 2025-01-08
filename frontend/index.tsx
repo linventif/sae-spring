@@ -8,6 +8,7 @@ import { Component } from "solid-js";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
+import TestCalendar from "./pages/TestCalendar";
 
 const root = document.getElementById("root");
 
@@ -31,6 +32,7 @@ render(
   () => (
     <Router root={App}>
       <Route path="/" component={Home} />
+      <Route path="/calendar" component={TestCalendar} />
       <Route path="*" component={NotFound} />
     </Router>
   ),
