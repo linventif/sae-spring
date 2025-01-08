@@ -1,0 +1,16 @@
+meta {
+  name: get appointments between date
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{apiUrl}}/api/appointments?fromDate=2025-01-01T00:00:00+01:00&toDate=2025-02-01T00:00:00+01:00
+  body: none
+  auth: none
+}
+
+params:query {
+  fromDate: 2025-01-01T00:00:00+01:00
+  toDate: 2025-02-01T00:00:00+01:00
+}
