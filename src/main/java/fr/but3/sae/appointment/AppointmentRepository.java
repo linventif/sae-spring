@@ -8,7 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Date;
 import java.util.List;
 
-public interface AppointmentRepository extends JpaRepository<Appointment, String> {
+public interface AppointmentRepository extends JpaRepository<AppointmentReserved, String> {
 
-    List<Appointment> findByStartDateBetween(@NotNull @NotEmpty Date startDateAfter, @NotNull @NotEmpty Date startDateBefore);
+    List<AppointmentReserved> findByAppointmentDateBetween(
+            @NotNull @NotEmpty Date startDateAfter,
+            @NotNull @NotEmpty Date startDateBefore
+    );
 }

@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import TestCalendar from "./pages/TestCalendar";
 import Professional from "./pages/Professional";
+import Account from "./pages/Account";
 
 const root = document.getElementById("root");
 
@@ -33,6 +34,7 @@ render(
       <Route path="/" component={Home} />
       <Route path="/calendar" component={TestCalendar} />
       <Route path="/profesional" component={Professional} />
+      <Route path="/account" component={Account} />
       <Route path="*" component={NotFound} />
     </Router>
   ),

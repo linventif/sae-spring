@@ -5,7 +5,7 @@ const Header: Component = () => {
     <>
       <nav class="navbar bg-base-100 rounded-box shadow">
         <div class="flex flex-1 items-center">
-          <a class="link text-base-content link-neutral text-xl font-semibold no-underline" href="#">
+          <a class="link text-base-content link-neutral text-xl font-semibold no-underline" href="/">
             MedLib
           </a>
         </div>
@@ -32,15 +32,9 @@ const Header: Component = () => {
                 </div>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/account">
                   <span class="icon-[tabler--user]"></span>
-                  Mon Profil
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  <span class="icon-[tabler--settings]"></span>
-                  Paramètres
+                  Mon Compte
                 </a>
               </li>
               <li class="dropdown-footer gap-2">

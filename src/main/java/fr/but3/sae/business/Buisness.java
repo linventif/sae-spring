@@ -1,7 +1,8 @@
-package fr.but3.sae.appointment;
+package fr.but3.sae.business;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import fr.but3.sae.appUser.AppUser;
+import fr.but3.sae.appointmentSlot.AppointmentSlot;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 
-import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -17,20 +18,25 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Validated
-public class Appointment {
+public class Buisness {
     @Id
     private String id = UUID.randomUUID().toString();
 
     @NotNull
     @NotEmpty
-    private String title;
+    private String name;
 
     @NotNull
-    private Date startDate;
+    @NotEmpty
+    private String address;
 
     @NotNull
-    private Date endDate;
+    @NotEmpty
+    private String description;
 
-    @NotNull
-    private int numberOfPersons;
+    @OneToMany
+    private List<AppointmentSlot> appointmentSlots;
+
+    @ManyToMany
+    private List<AppUser> owners;
 }
