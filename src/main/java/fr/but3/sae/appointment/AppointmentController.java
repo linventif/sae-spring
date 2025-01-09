@@ -19,7 +19,7 @@ public class AppointmentController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping(produces = {"application/json", "application/xml"})
     public ResponseEntity<?> getAllAppointments(
             @RequestParam(required = false) String fromDate,
             @RequestParam(required = false) String toDate) {
