@@ -18,7 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Validated
-public class Buisness {
+public class Business {
     @Id
     private String id = UUID.randomUUID().toString();
 

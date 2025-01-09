@@ -1,7 +1,7 @@
 package fr.but3.sae.appUser;
 
 import fr.but3.sae.appointment.AppointmentReserved;
-import fr.but3.sae.business.Buisness;
+import fr.but3.sae.business.Business;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
@@ -9,7 +9,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -48,8 +47,8 @@ public class AppUser {
     private boolean admin = false;
 
     @ManyToMany
-    private List<Buisness> buisnesses;
+    private List<Business> businesses;
 
     @OneToMany
-    private List<AppointmentReserved> appointments;
+    private List<AppointmentReserved> appointmentsReserved;
 }

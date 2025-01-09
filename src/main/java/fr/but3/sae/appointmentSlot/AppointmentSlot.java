@@ -1,7 +1,7 @@
 package fr.but3.sae.appointmentSlot;
 
 import fr.but3.sae.appointment.AppointmentReserved;
-import fr.but3.sae.business.Buisness;
+import fr.but3.sae.business.Business;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -39,5 +39,5 @@ public class AppointmentSlot {
     private List<AppointmentReserved> appointments;
 
     @ManyToOne
-    private Buisness buisness;
+    private Business business;
 }
