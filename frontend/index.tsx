@@ -9,13 +9,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import TestCalendar from "./pages/TestCalendar";
+import Professional from "./pages/Professional";
 
 const root = document.getElementById("root");
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
-  throw new Error(
-    "Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?",
-  );
+  throw new Error("Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?");
 }
 
 const App: Component = (props: any) => {
@@ -33,6 +32,7 @@ render(
     <Router root={App}>
       <Route path="/" component={Home} />
       <Route path="/calendar" component={TestCalendar} />
+      <Route path="/profesional" component={Professional} />
       <Route path="*" component={NotFound} />
     </Router>
   ),

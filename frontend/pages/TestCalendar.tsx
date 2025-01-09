@@ -1,8 +1,9 @@
-import { Component, onMount } from "solid-js";
+import { Component, createSignal, For, onMount } from "solid-js";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { Calendar } from "@fullcalendar/core";
 import { getApiUrl } from "../utils";
+import flatpickr from "flatpickr";
 
 interface Appointment {
   id: string;
@@ -11,6 +12,18 @@ interface Appointment {
   endDate: string;
   numberOfPersons: number;
 }
+
+const TestFlatPickr: Component = () => {
+  let element: HTMLInputElement | undefined;
+
+  onMount(() => {
+    if (element) {
+      flatpickr(element, {});
+    }
+  });
+
+  return <input type="text" class="input max-w-sm" placeholder="YYYY-MM-DD" ref={(el) => (element = el)} />;
+};
 
 const TestCalendar: Component = () => {
   let calendarEl: HTMLDivElement | undefined;
@@ -42,10 +55,10 @@ const TestCalendar: Component = () => {
         locale: "fr",
         selectable: true,
         initialDate: new URLSearchParams(window.location.search).get("date") || undefined,
-        events: [
-          { title: "Event 1", start: "2025-01-10" },
-          { title: "Event 2", start: "2025-01-12" },
-        ],
+        // events: [
+        //   { title: "Event 1", start: "2025-01-10" },
+        //   { title: "Event 2", start: "2025-01-12" },
+        // ],
         dateClick: (info) => {
           const title = prompt("Enter event title");
           if (title) {
@@ -63,34 +76,83 @@ const TestCalendar: Component = () => {
     }
   });
 
+  const [newAppointmentData, setNewAppointmentData] = createSignal({
+    ownerInfo: {
+      firstName: "",
+      lastName: "",
+      email: "",
+    },
+    participants: [],
+  });
+
   return (
     <>
-      <button type="button" class="btn btn-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="middle-center-modal" data-overlay="#middle-center-modal">
-        Middle center
+      <button type="button" class="btn btn-primary" aria-haspopup="form" aria-expanded="false" aria-controls="middle-center-modal" data-overlay="#middle-center-modal">
+        Nouveau Rendez-Vous
       </button>
 
-      <div id="middle-center-modal" class="overlay modal overlay-open:opacity-100 modal-middle hidden" role="dialog" tabindex="-1">
-        <div class="modal-dialog overlay-open:opacity-100">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title">Dialog Title</h3>
-              <button type="button" class="btn btn-text btn-circle btn-sm absolute end-3 top-3" aria-label="Close" data-overlay="#middle-center-modal">
-                <span class="icon-[tabler--x] size-4"></span>
+      <div class="bg-base-100 w-full rounded-lg shadow">
+        <h5 class="bg-base-300 rounded-t-lg p-4 text-base text-xl font-bold">Nouveaux Rendez-Vous</h5>
+        <div class="w-full p-4">
+          <form class="needs-validation peer grid gap-y-4" noValidate>
+            <div class="w-full">
+              <h6 class="text-lg font-semibold">Informations du compte</h6>
+              <hr class="mb-4 mt-2" />
+            </div>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div>
+                <label class="label label-text" htmlFor="firstName">
+                  Prénom
+                </label>
+                <input id="firstName" type="text" placeholder="John" class="input" required />
+                <span class="error-message">Entrez votre prénom.</span>
+              </div>
+              <div>
+                <label class="label label-text" htmlFor="lastName">
+                  Nom
+                </label>
+                <input id="lastName" type="text" placeholder="Doe" class="input" required />
+                <span class="error-message">Entrez votre nom.</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div>
+                <label class="label label-text" htmlFor="userEmail">
+                  Email
+                </label>
+                <input id="userEmail" type="email" class="input" placeholder="john@gmail.com" aria-label="john@gmail.com" required="" />
+                <span class="error-message">Entrez une adresse email valide.</span>
+              </div>
+            </div>
+            <div class="w-full">
+              <h6 class="text-lg font-semibold">Informations du rendez-vous</h6>
+              <hr class="mb-4 mt-2" />
+            </div>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/*  nombre de participant */}
+              <div>
+                <label class="label label-text" htmlFor="numberOfPersons">
+                  Nombre de participants
+                </label>
+                <input id="numberOfPersons" type="number" className="input" placeholder="1" required />
+                <span class="error-message">Entrez le nombre de participants.</span>
+              </div>
+              {/*  créneau horaire (heure de début et de fin) */}
+              <div>
+                <label class="label label-text" htmlFor="startDate">
+                  Date et heure de début
+                </label>
+                <input id="startDate" type="datetime-local" className="input" required />
+                <span class="error-message">Entrez la date et heure de début.</span>
+              </div>
+              <TestFlatPickr />
+            </div>
+            <div class="mt-4">
+              <button type="submit" name="submitButton" class="btn btn-primary">
+                Submit
               </button>
             </div>
-            <div class="modal-body">
-              This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text in the modal, we use an inline style to set a minimum height, thereby extending
-              the length of the overall modal and demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling will move the modal as needed.
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-soft btn-secondary" data-overlay="#middle-center-modal">
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 
