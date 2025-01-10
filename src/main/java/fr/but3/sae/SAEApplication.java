@@ -3,7 +3,7 @@ package fr.but3.sae;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "fr.but3.sae")
 public class SAEApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SAEApplication.class, args);

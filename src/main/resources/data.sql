@@ -1,10 +1,10 @@
 -- app_user
 INSERT INTO app_user (id, first_name, last_name, address, email, password, admin) VALUES
-(gen_random_uuid(), 'Admin', 'Admin', '1 Admin Street', 'sae_spring.disburse070@passmail.net', '{noop}john', true),
+(gen_random_uuid(), 'Admin', 'Admin', '1 Admin Street', 'sae_spring.disburse070@passmail.net', '{noop}admin', true),
 (gen_random_uuid(), 'John', 'Doe', '1 John Doe Street', 'sae_spring.generous659@passmail.net', '{noop}john', false),
 (gen_random_uuid(), 'Jane', 'Doe', '1 Jane Doe Street', 'sae_spring.floral517@passmail.net', '{noop}jane', false),
-(gen_random_uuid(), 'James', 'Smith', '1 James Smith Street', 'sae_spring.disburse070@passmail.net', '{noop}james', false),
-(gen_random_uuid(), 'Jenny', 'Smith', '1 Jenny Smith Street', 'sae_spring.disburse070@passmail.net', '{noop}jenny', false);
+(gen_random_uuid(), 'James', 'Smith', '1 James Smith Street', 'james@proton.me', '{noop}james', false),
+(gen_random_uuid(), 'Jenny', 'Smith', '1 Jenny Smith Street', 'jenny@proton.me', '{noop}jenny', false);
 
 -- business
 INSERT INTO business (id, name, address, description) VALUES
