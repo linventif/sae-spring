@@ -1,5 +1,7 @@
 package fr.but3.sae.appointmentSlot;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import fr.but3.sae.appointment.AppointmentReserved;
 import fr.but3.sae.business.Business;
 import jakarta.persistence.*;
@@ -36,6 +38,7 @@ public class AppointmentSlot {
     private int dayOfWeek;
 
     @OneToMany
+    @JsonIgnore
     private List<AppointmentReserved> appointments;
 
     @ManyToOne

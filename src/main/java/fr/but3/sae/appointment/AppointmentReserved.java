@@ -1,8 +1,8 @@
 package fr.but3.sae.appointment;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fr.but3.sae.appUser.AppUser;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,8 +30,10 @@ public class AppointmentReserved {
     private Date appointmentDate;
 
     @ManyToOne
+    @JsonIgnore
     private AppointmentSlot appointmentSlot;
 
     @ManyToOne
+    @JsonIgnore
     private AppUser owner;
 }

@@ -15,4 +15,5 @@ public interface AppUserRepository extends JpaRepository<AppUser, String> {
      * @return un Optional contenant l'utilisateur s'il existe
      */
     Optional<AppUser> findByEmail(String email);
+
 }

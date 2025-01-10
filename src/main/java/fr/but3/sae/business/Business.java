@@ -1,5 +1,6 @@
 package fr.but3.sae.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fr.but3.sae.appUser.AppUser;
 import fr.but3.sae.appointmentSlot.AppointmentSlot;
 import jakarta.persistence.*;
@@ -35,8 +36,10 @@ public class Business {
     private String description;
 
     @OneToMany
+    @JsonIgnore
     private List<AppointmentSlot> appointmentSlots;
 
     @ManyToMany
+    @JsonIgnore
     private List<AppUser> owners;
 }
