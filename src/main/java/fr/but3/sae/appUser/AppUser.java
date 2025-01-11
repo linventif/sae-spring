@@ -1,7 +1,7 @@
 package fr.but3.sae.appUser;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import fr.but3.sae.appointment.AppointmentReserved;
+import fr.but3.sae.appointment.Appointment;
 import fr.but3.sae.business.Business;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -44,6 +44,8 @@ public class AppUser {
     @NotEmpty
     private String password;
 
+    private String profilePicture;
+
     @NotNull
     private boolean admin = false;
 
@@ -53,5 +55,5 @@ public class AppUser {
 
     @OneToMany
     @JsonIgnore
-    private List<AppointmentReserved> appointmentsReserved;
+    private List<Appointment> appointmentsReserved;
 }

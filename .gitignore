@@ -4,3 +4,4 @@ node_modules
 dist
 .env
 application.properties
+public-profiles-picture
