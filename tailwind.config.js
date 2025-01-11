@@ -1,23 +1,60 @@
-const { addDynamicIconSelectors } = require("@iconify/tailwind");
 module.exports = {
-  /*
-
-    <script src="/node_modules/lodash/lodash.js"></script>
-    <script src="/node_modules/dropzone/dist/dropzone-min.js"></script>
-    <script src="/node_modules/flyonui/flyonui.js"></script>
-    <script src="/node_modules/fullcalendar/index.global.js"></script>
-    <script src="/node_modules/flatpickr/dist/flatpickr.js"></script>
-   */
-  content: [
-    "./node_modules/flyonui/dist/js/*.js",
-    "./node_modules/flatpickr/dist/*.js",
-    "./node_modules/fullcalendar/dist/*.js",
-    "./node_modules/dropzone/dist/*.js",
-    "./node_modules/lodash/*.js",
-    "./frontend/**/*.{js,ts,jsx,tsx}",
-  ],
-  plugins: [require("flyonui"), require("flyonui/plugin"), addDynamicIconSelectors()],
-  flyonui: {
-    vendors: true,
+  content: ["./frontend/**/*.{js,ts,jsx,tsx}"],
+  plugins: [require("daisyui")],
+  theme: {
+    extend: {
+      colors: {
+        background: "#292C36",
+        primary: "#3A3E49",
+        "primary-active": "#3A3E49A3",
+        secondary: "#2c2f3b",
+        "secondary-active": "#1f2128",
+        green: "#4E9735",
+        "green-active": "#3A7A26",
+        orange: "#CC913E",
+        "orange-active": "#A87A2B",
+        red: "#C93B3B",
+        "red-active": "#A82B2B",
+        blue: "#43c5d6",
+        "blue-active": "#2998a7",
+        purple: "#495afc",
+        "purple-active": "#2f3f9f",
+        "soft-purple": "#637ab9",
+        "soft-purple-active": "#4d5b8e",
+        font: "#fff",
+        "font-secondary": "#b3b3b3",
+        "font-tertiary": "#8c8c8c",
+        "zebra-odd": "#3A3E49",
+      },
+    },
+  },
+  daisyui: {
+    themes: [
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#3A3E49",
+          "primary-content": "#fff",
+          secondary: "#2c2f3b",
+          "secondary-content": "#fff",
+          accent: "#CC913E",
+          "accent-content": "#fff",
+          neutral: "#3A3E49",
+          "neutral-content": "#fff",
+          "base-100": "#292C36",
+          "base-200": "#3A3E49",
+          "base-300": "#3A3E49",
+          "base-content": "#b3b3b3",
+          info: "#43c5d6",
+          "info-content": "#3A3E49",
+          success: "#4E9735",
+          "success-content": "#3A3E49",
+          warning: "#CC913E",
+          "warning-content": "#3A3E49",
+          error: "#C93B3B",
+          "error-content": "#3A3E49",
+        },
+      },
+    ],
   },
 };

@@ -19,7 +19,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Validated
-public class AppointmentReserved {
+public class Appointment {
     @Id
     private String id = UUID.randomUUID().toString();
 

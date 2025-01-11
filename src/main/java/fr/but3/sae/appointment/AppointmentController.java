@@ -1,11 +1,8 @@
 package fr.but3.sae.appointment;
 
 import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
@@ -23,21 +20,10 @@ public class AppointmentController {
         this.service = service;
     }
 
-    @Autowired
-    private JavaMailSender sender;
-
-    @GetMapping(produces = {"application/json", "application/xml"})
+    @GetMapping()
     public ResponseEntity<?> getAllAppointments(
             @RequestParam(required = false) String fromDate,
             @RequestParam(required = false) String toDate) throws MessagingException {
-
-        MimeMessage message = sender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
-        helper.setFrom("gregoire.launaybecue.etu@univ-lille.fr");
-        helper.setTo("gregoire.becue@proton.me");
-        helper.setSubject("Hi");
-        helper.setText("How are you?");
-        sender.send(message);
 
         if (fromDate != null || toDate != null) {
             if (fromDate == null || toDate == null) {
@@ -64,14 +50,14 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AppointmentReserved> getAppointmentById(@PathVariable String id) {
+    public ResponseEntity<Appointment> getAppointmentById(@PathVariable String id) {
         return service.getAppointmentById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public AppointmentReserved createAppointment(@RequestBody AppointmentReserved appointment) {
+    public Appointment createAppointment(@RequestBody Appointment appointment) {
         return service.createAppointment(appointment);
     }
 

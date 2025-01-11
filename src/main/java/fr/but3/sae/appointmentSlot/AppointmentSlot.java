@@ -1,8 +1,7 @@
 package fr.but3.sae.appointmentSlot;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import fr.but3.sae.appointment.AppointmentReserved;
+import fr.but3.sae.appointment.Appointment;
 import fr.but3.sae.business.Business;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -39,8 +38,9 @@ public class AppointmentSlot {
 
     @OneToMany
     @JsonIgnore
-    private List<AppointmentReserved> appointments;
+    private List<Appointment> appointments;
 
     @ManyToOne
+    @JsonIgnore
     private Business business;
 }

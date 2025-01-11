@@ -17,19 +17,19 @@ public class AppointmentService {
         this.repository = repository;
     }
 
-    public List<AppointmentReserved> getAllAppointments() {
+    public List<Appointment> getAllAppointments() {
         return repository.findAll();
     }
 
-    public List<AppointmentReserved> getAllAppointmentsFromDateToDate(Date startDate, Date endDate) {
+    public List<Appointment> getAllAppointmentsFromDateToDate(Date startDate, Date endDate) {
         return repository.findByAppointmentDateBetween(startDate, endDate);
     }
 
-    public Optional<AppointmentReserved> getAppointmentById(String id) {
+    public Optional<Appointment> getAppointmentById(String id) {
         return repository.findById(id);
     }
 
-    public AppointmentReserved createAppointment(AppointmentReserved appointment) {
+    public Appointment createAppointment(Appointment appointment) {
         return repository.save(appointment);
     }
 

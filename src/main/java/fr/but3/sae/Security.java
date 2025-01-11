@@ -17,7 +17,9 @@ public class Security {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/static/**", "/index.html", "/", "*.js", "*.css", "/node_modules/**").permitAll()
-                        .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/api/auth/login", "/api/auth/register").permitAll()
+                        .requestMatchers("/api/users/profile-picture/*").permitAll()
+                        .requestMatchers("/api/business").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
                 )

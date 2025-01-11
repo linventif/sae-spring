@@ -1,26 +1,19 @@
 import { A } from "@solidjs/router";
 import type { Component } from "solid-js";
+import icon from "../assets/icon.png";
 
 const Footer: Component = () => {
   return (
     <>
-      <footer class="footer bg-base-200/60 px-6 py-4">
-        <div class="flex w-full items-center justify-between">
-          <aside class="grid-flow-col items-center">
-            <p>
-              Créer par{" "}
-              <A href="https://gregoire-becue.me" class="link">
-                Grégoire Launay--Bécue
-              </A>{" "}
-              en 2024-2025
-            </p>
-          </aside>
-          <div class="flex gap-4 h-5">
-            <a href="https://github.com/linventif/sae-spring" class="link" aria-label="Github Link">
-              <span class="icon-[tabler--brand-github] size-5"></span>
-            </a>
+      <hr class="border-[1px] border-primary" />
+      <footer class="footer px-10 py-4 bg-background text-base-content max-w-screen-2xl mx-auto">
+        <aside class="items-center grid-flow-col">
+          <img src={icon} alt="logo" width="40" height="40" />
+          <div class="ml-2 flex flex-col">
+            <h3 class="text-font font-bold">Reservio</h3>
+            <p>Reservio est une application de gestion de rendez-vous.</p>
           </div>
-        </div>
+        </aside>
       </footer>
     </>
   );

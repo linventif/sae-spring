@@ -35,8 +35,11 @@ public class Business {
     @NotEmpty
     private String description;
 
+    @NotNull
+    @NotEmpty
+    private String businessType;
+
     @OneToMany
-    @JsonIgnore
     private List<AppointmentSlot> appointmentSlots;
 
     @ManyToMany
