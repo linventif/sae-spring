@@ -1,0 +1,24 @@
+meta {
+  name: get hello
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{apiUrl}}/api/auth/hello
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "email": "sae_spring.disburse070@passmail.net",
+      "password": "admin"
+  }
+  
+}
+
+script:post-response {
+  const token = res.getBody();
+  bru.setEnvVar("bearerToken", token)
+}

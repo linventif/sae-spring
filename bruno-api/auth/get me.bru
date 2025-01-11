@@ -1,0 +1,16 @@
+meta {
+  name: get me
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{apiUrl}}/api/auth/me
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  const token = res.getBody();
+  bru.setEnvVar("bearerToken", token)
+}
